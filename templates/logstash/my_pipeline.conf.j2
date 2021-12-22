@@ -1,0 +1,16 @@
+input {
+  tcp {
+    port => "5432"
+   }
+  }
+filter {
+  mutate {
+    add_field => [ "netology_field", "Message from 5432" ]
+    }
+  }
+output {
+  elasticsearch {
+    hosts => ["{{ elasticsearch_ip }}:9200"]
+    index => "my-logs"
+  }
+}

@@ -1,0 +1,30 @@
+[Unit]
+Description=Elasticsearch
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User={{ ansible_user_id }}
+Group={{ ansible_user_id }}
+
+ExecStart={{ elastic_home }}/bin/elasticsearch 
+
+# Connects standard output to /dev/null
+StandardOutput=null
+
+# Connects standard error to journal
+StandardError=journal
+
+# When a JVM receives a SIGTERM signal it exits with code 143
+SuccessExitStatus=143
+
+# Specifies the maximum file descriptor number that can be opened by this process
+LimitNOFILE=262144
+
+# Shutdown delay in seconds, before process is tried to be killed with KILL (if configured)
+TimeoutStopSec=20
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

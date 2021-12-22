@@ -1,0 +1,4 @@
+---
+logstash_version: "7.16.2"
+logstash_home: "/opt/logstash/{{ logstash_version }}"
+elasticsearch_ip: "{{ hostvars['el-test']['ansible_default_ipv4']['address'] }}"

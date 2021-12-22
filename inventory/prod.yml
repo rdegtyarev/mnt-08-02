@@ -1,0 +1,9 @@
+---
+elasticsearch:
+  hosts:
+    el-test:
+      ansible_host: ***
+logstash:
+  hosts:
+    lgs-test:
+      ansible_host: ***

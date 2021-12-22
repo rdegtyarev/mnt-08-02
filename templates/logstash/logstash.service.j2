@@ -1,0 +1,24 @@
+[Unit]
+Description=Logstash
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User={{ ansible_user_id }}
+Group={{ ansible_user_id }}
+
+ExecStart={{ logstash_home }}/bin/logstash 
+
+# Connects standard output to /dev/null
+StandardOutput=null
+
+# Connects standard error to journal
+StandardError=journal
+
+# Shutdown delay in seconds, before process is tried to be killed with KILL (if configured)
+TimeoutStopSec=20
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
