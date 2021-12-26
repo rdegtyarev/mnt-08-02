@@ -17,7 +17,7 @@ Logstash: Centos 7, 4Gb RAM, 20GB HDD
 ## Проверка
 С хоста, на котором установлен Logstash, либо любого другого в этой же сети (в этом случае localhots нужно заменить на внешний адрес хоста Logstash)
 
-> echo 'new message' | nc 62.84.119.249 5432
+> echo 'new message' | nc localhots 5432
 
 Проверяем создание индекса. На хосте с Elasticsearch^
 > curl -XGET 'http://localhost:9200/my-logs/_search?pretty'
